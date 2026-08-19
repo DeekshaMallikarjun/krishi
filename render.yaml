@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: krishiastra
+    runtime: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: "bash build.sh"
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /api/location/states-districts
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        value: sqlite:///./krishiastra.db
+      - key: OPEN_METEO_BASE_URL
+        value: https://api.open-meteo.com/v1/forecast
+      - key: GROQ_API_KEY
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_ENV
+        value: gcp-starter
