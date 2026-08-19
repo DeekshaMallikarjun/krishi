@@ -2,9 +2,8 @@
 node_modules/
 frontend/node_modules/
 
-# Production build outputs
-frontend/dist/
-dist/
+# Production build outputs (allow frontend/dist for single-service deployments)
+/dist/
 build/
 
 # Python cache & virtual environments
