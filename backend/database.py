@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_DB = f"sqlite:///{os.path.join(BASE_DIR, 'krishiastra.db').replace('\\\\', '/')}"
+db_path = os.path.join(BASE_DIR, "krishiastra.db").replace("\\", "/")
+DEFAULT_DB = f"sqlite:///{db_path}"
 DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_DB)
 
 # Convert mysql link if needed, default sqlite for seamless zero-config setup
